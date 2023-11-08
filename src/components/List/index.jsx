@@ -11,8 +11,8 @@ const List = ({ items, setItems, startDate, endDate }) => {
     <Container>
       {data.length ? (
         data.map((group, key) => (
-          <Accordion key={key} pb='20px'>
-            <Text fontSize='md' color='gray.500'>
+          <Accordion key={key} pb="20px">
+            <Text fontSize="md" color="gray.500">
               {group.date}
             </Text>
             {group.contents.map((item, key) => (
@@ -22,7 +22,7 @@ const List = ({ items, setItems, startDate, endDate }) => {
         ))
       ) : (
         <Box>
-          <Text color='gray.500' textAlign='center'>
+          <Text color="gray.500" textAlign="center">
             No Data
           </Text>
         </Box>
