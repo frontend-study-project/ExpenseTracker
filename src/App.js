@@ -21,6 +21,8 @@ function App() {
     { id: 8, category: '쇼핑', description: 'shoes', amount: 25000, date: '2023-11-06' },
   ]);
 
+  const [realItems, setRealItems] = useState([]);
+
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
@@ -35,7 +37,7 @@ function App() {
          * author : 이수찬
          * function : Item 추가 Components
          */}
-        <AddItem format={format} parse={parse} value={value} setValue={setValue} />
+        <AddItem format={format} parse={parse} value={value} setValue={setValue} realItems={realItems} setRealItems={setRealItems} />
 
         {/*
          * author : -

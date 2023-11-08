@@ -1,20 +1,29 @@
 import React, { useState } from 'react';
 import { AddIcon } from '@chakra-ui/icons';
 import { Container, Text, IconButton, Box, Spacer, Flex, Button, NumberInputField, NumberInput, Input, VStack, Select } from '@chakra-ui/react';
+import { categoryList } from '../../data/categoryList';
 
-const AddItem = ({ format, parse, value, setValue }) => {
+const AddItem = ({ format, parse, value, setValue, realItems, setRealItems }) => {
   const [isAdd, setAdd] = useState(false);
+  const handleChange = e => {
+    setValue(e.target.value);
+  };
+  console.log(realItems.description);
 
   return (
     <>
       <Container>
         <Flex alignItems="center">
           <Box>
+            <Text as="span" fontWeight="b" fontSize="4xl">
+              {realItems[0].description}의 가격은
+            </Text>
+
             <Text as="span" fontWeight="b" fontSize="4xl" pr="3px">
               &#8361;
             </Text>
             <Text as="span" fontWeight="b" fontSize="4xl">
-              50,000
+              {realItems[0].amount}
             </Text>
           </Box>
           <Spacer />
@@ -30,23 +39,16 @@ const AddItem = ({ format, parse, value, setValue }) => {
                 Category
               </Text>
               <Select size="sm" placeholder="선택">
-                <option value="식비">식비</option>
-                <option value="간식">간식</option>
-                <option value="문화생활">문화생활</option>
-                <option value="쇼핑">쇼핑</option>
-                <option value="교통">교통</option>
-                <option value="교육">교육</option>
-                <option value="주거">주거</option>
-                <option value="통신">통신</option>
-                <option value="경조사">경조사</option>
-                <option value="경조사">기타</option>
+                {categoryList.map((category, key) => (
+                  <option key={key}>{category.name}</option>
+                ))}
               </Select>
             </Box>
             <Box w="100%">
               <Text fontSize="sm" color="gray.500">
                 Description
               </Text>
-              <Input size="sm" borderColor="gray.300" errorBorderColor="red.300" placeholder="내용을 입력 하세요." />
+              <Input size="sm" borderColor="gray.300" errorBorderColor="red.300" placeholder="내용을 입력 하세요." value={realItems.description} onChange={handleChange} />
             </Box>
             <Box w="100%">
               <Text fontSize="sm" color="gray.500">
