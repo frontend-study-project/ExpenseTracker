@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import { useState } from "react";
+import { categoryList } from "../../utils/data/categoryList";
 
 const AddItem = () => {
   const [isAdd, setAdd] = useState(false);
@@ -52,9 +53,13 @@ const AddItem = () => {
                 Category
               </Text>
               <Select size="sm" placeholder="Category">
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+                {categoryList.map((item, index) => {
+                  return (
+                    <option key={index} value={item.name}>
+                      {item.name}
+                    </option>
+                  );
+                })}
               </Select>
             </Box>
             <Box w="100%">
