@@ -1,4 +1,3 @@
-/* */
 export const groupByDate = data => {
   return data.reduce((acc, cur) => {
     const obj = {};
@@ -15,8 +14,8 @@ export const groupByDate = data => {
 };
 
 /*
- * 작성자 : 고정인
- * 기능 : 날짜(기간) 정렬
+ * author : 고정인
+ * function : 날짜(기간) 정렬
  */
 export const sortByDate = data => {
   return data.sort((a, b) => {

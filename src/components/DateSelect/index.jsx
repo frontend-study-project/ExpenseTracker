@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Text, Flex, Box } from '@chakra-ui/react';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import ko from 'date-fns/locale/ko';
 
-const DateSelect = (startDate, endDate, setStartDate, setEndDate) => {
+const DateSelect = ({ startDate, endDate, setStartDate, setEndDate }) => {
   registerLocale('ko', ko);
 
   return (

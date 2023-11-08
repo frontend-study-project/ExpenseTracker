@@ -29,17 +29,24 @@ const AddItem = ({ format, parse, value, setValue }) => {
               <Text as="span" fontSize="sm" color="gray.500">
                 Category
               </Text>
-              <Select size="sm" placeholder="Category">
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+              <Select size="sm" placeholder="선택">
+                <option value="식비">식비</option>
+                <option value="간식">간식</option>
+                <option value="문화생활">문화생활</option>
+                <option value="쇼핑">쇼핑</option>
+                <option value="교통">교통</option>
+                <option value="교육">교육</option>
+                <option value="주거">주거</option>
+                <option value="통신">통신</option>
+                <option value="경조사">경조사</option>
+                <option value="경조사">기타</option>
               </Select>
             </Box>
             <Box w="100%">
               <Text fontSize="sm" color="gray.500">
                 Description
               </Text>
-              <Input size="sm" borderColor="gray.300" errorBorderColor="red.300" placeholder="Description" />
+              <Input size="sm" borderColor="gray.300" errorBorderColor="red.300" placeholder="내용을 입력 하세요." />
             </Box>
             <Box w="100%">
               <Text fontSize="sm" color="gray.500">
