@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import { Flex, Text, VStack, Button, Box, Spacer, Input, Select } from '@chakra-ui/react';
+import {
+  Flex,
+  Text,
+  VStack,
+  Button,
+  Box,
+  Spacer,
+  Input,
+  Select,
+} from "@chakra-ui/react";
 
-import { categoryList } from '../../data/categoryList';
+import { categoryList } from "../../utils/data/categoryList";
 
 const InputForm = ({ isAddForm, setIsEditing, items, setItems, item }) => {
   const [itemInfo, setItemInfo] = useState(item);
@@ -32,51 +41,101 @@ const InputForm = ({ isAddForm, setIsEditing, items, setItems, item }) => {
 
   return (
     <VStack>
-      <Box w='100%'>
-        <Text as='span' fontSize='sm' color='gray.500'>
+      <Box w="100%">
+        <Text as="span" fontSize="sm" color="gray.500">
           Category
         </Text>
-        <Select size='sm' name='category' onChange={onChange} value={itemInfo.category}>
+        <Select
+          size="sm"
+          name="category"
+          onChange={onChange}
+          value={itemInfo.category}
+        >
           {categoryList.map((category, key) => (
             <option key={key}>{category.name}</option>
           ))}
         </Select>
       </Box>
-      <Box w='100%'>
-        <Text fontSize='sm' color='gray.500'>
+      <Box w="100%">
+        <Text fontSize="sm" color="gray.500">
           Description
         </Text>
-        <Input size='sm' borderColor='gray.300' errorBorderColor='red.300' placeholder='Description' name='description' onChange={onChange} value={itemInfo.description} />
+        <Input
+          size="sm"
+          borderColor="gray.300"
+          errorBorderColor="red.300"
+          placeholder="Description"
+          name="description"
+          onChange={onChange}
+          value={itemInfo.description}
+        />
       </Box>
-      <Box w='100%'>
-        <Text fontSize='sm' color='gray.500'>
+      <Box w="100%">
+        <Text fontSize="sm" color="gray.500">
           Amount
         </Text>
-        <Input size='sm' borderColor='gray.300' errorBorderColor='red.300' type='number' placeholder='Amount' max={0} min={100000000} name='amount' onChange={onChange} value={itemInfo.amount} />
+        <Input
+          size="sm"
+          borderColor="gray.300"
+          errorBorderColor="red.300"
+          type="number"
+          placeholder="Amount"
+          max={0}
+          min={100000000}
+          name="amount"
+          onChange={onChange}
+          value={itemInfo.amount}
+        />
       </Box>
-      <Box w='100%'>
-        <Text fontSize='sm' color='gray.500'>
+      <Box w="100%">
+        <Text fontSize="sm" color="gray.500">
           Date
         </Text>
-        <Input size='sm' borderColor='gray.300' errorBorderColor='red.300' type='date' placeholder='Select Date' name='date' onChange={onChange} value={itemInfo.date} />
+        <Input
+          size="sm"
+          borderColor="gray.300"
+          errorBorderColor="red.300"
+          type="date"
+          placeholder="Select Date"
+          name="date"
+          onChange={onChange}
+          value={itemInfo.date}
+        />
       </Box>
       {isAddForm ? (
-        <Button colorScheme='blue' w='100%' size='sm' mt='10px'>
+        <Button colorScheme="blue" w="100%" size="sm" mt="10px">
           Add
         </Button>
       ) : (
-        <Flex w='100%' mt='10px'>
+        <Flex w="100%" mt="10px">
           <Spacer />
           <Spacer />
-          <Button colorScheme='cyan' variant='outline' size='sm' p='0 15px' onClick={onClickCancleButton}>
+          <Button
+            colorScheme="cyan"
+            variant="outline"
+            size="sm"
+            p="0 15px"
+            onClick={onClickCancleButton}
+          >
             Cancle
           </Button>
           <Spacer />
-          <Button colorScheme='red' variant='outline' size='sm' p='0 15px' onClick={onClickDeleteButton}>
+          <Button
+            colorScheme="red"
+            variant="outline"
+            size="sm"
+            p="0 15px"
+            onClick={onClickDeleteButton}
+          >
             Delete
           </Button>
           <Spacer />
-          <Button colorScheme='blue' size='sm' p='0 15px' onClick={onClickUpdateButton}>
+          <Button
+            colorScheme="blue"
+            size="sm"
+            p="0 15px"
+            onClick={onClickUpdateButton}
+          >
             Update
           </Button>
           <Spacer />
