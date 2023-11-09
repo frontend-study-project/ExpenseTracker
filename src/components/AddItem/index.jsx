@@ -14,7 +14,7 @@ import {
   VStack,
   Select,
 } from "@chakra-ui/react";
-import { categoryList } from "../../data/categoryList";
+import { categoryList } from "../../utils/data/categoryList";
 
 const AddItem = ({
   format,
