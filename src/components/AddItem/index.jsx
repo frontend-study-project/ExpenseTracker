@@ -1,36 +1,49 @@
+import React, { useState } from "react";
+import { AddIcon } from "@chakra-ui/icons";
 import {
   Container,
-  Flex,
   Text,
-  VStack,
-  Button,
-  Box,
   IconButton,
+  Box,
   Spacer,
-  Input,
-  Select,
-  NumberInput,
+  Flex,
+  Button,
   NumberInputField,
+  NumberInput,
+  Input,
+  VStack,
+  Select,
 } from "@chakra-ui/react";
-import { AddIcon } from "@chakra-ui/icons";
-import { useState } from "react";
-import { categoryList } from "../../utils/data/categoryList";
+import { categoryList } from "../../data/categoryList";
 
-const AddItem = () => {
+const AddItem = ({
+  format,
+  parse,
+  value,
+  setValue,
+  realItems,
+  setRealItems,
+}) => {
   const [isAdd, setAdd] = useState(false);
-  const [value, setValue] = useState("0");
-  const format = (val) => `₩ ` + val;
-  const parse = (val) => val.replace(/^\₩/, "");
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+  console.log(realItems.description);
+
   return (
     <>
       <Container>
         <Flex alignItems="center">
           <Box>
+            <Text as="span" fontWeight="b" fontSize="4xl">
+              {realItems[0].description}의 가격은
+            </Text>
+
             <Text as="span" fontWeight="b" fontSize="4xl" pr="3px">
               &#8361;
             </Text>
             <Text as="span" fontWeight="b" fontSize="4xl">
-              50,000
+              {realItems[0].amount}
             </Text>
           </Box>
           <Spacer />
@@ -47,19 +60,16 @@ const AddItem = () => {
       </Container>
       {isAdd && (
         <Container>
+          -
           <VStack>
             <Box w="100%">
               <Text as="span" fontSize="sm" color="gray.500">
                 Category
               </Text>
-              <Select size="sm" placeholder="Category">
-                {categoryList.map((item, index) => {
-                  return (
-                    <option key={index} value={item.name}>
-                      {item.name}
-                    </option>
-                  );
-                })}
+              <Select size="sm" placeholder="선택">
+                {categoryList.map((category, key) => (
+                  <option key={key}>{category.name}</option>
+                ))}
               </Select>
             </Box>
             <Box w="100%">
@@ -70,7 +80,9 @@ const AddItem = () => {
                 size="sm"
                 borderColor="gray.300"
                 errorBorderColor="red.300"
-                placeholder="Description"
+                placeholder="내용을 입력 하세요."
+                value={realItems.description}
+                onChange={handleChange}
               />
             </Box>
             <Box w="100%">
@@ -99,7 +111,7 @@ const AddItem = () => {
               />
             </Box>
             <Button colorScheme="blue" w="100%" size="sm" mt="10px">
-              등록
+              Add
             </Button>
           </VStack>
         </Container>

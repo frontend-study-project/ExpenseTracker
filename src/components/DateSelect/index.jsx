@@ -1,9 +1,11 @@
-import { Container, Flex, Button } from "@chakra-ui/react";
+import React from "react";
+import { Container, Text, Flex, Box } from "@chakra-ui/react";
 import DatePicker, { registerLocale } from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import ko from "date-fns/locale/ko";
+
 const DateSelect = ({ startDate, endDate, setStartDate, setEndDate }) => {
   registerLocale("ko", ko);
+
   return (
     <Container>
       <Flex>
@@ -44,6 +46,9 @@ const DateSelect = ({ startDate, endDate, setStartDate, setEndDate }) => {
             </svg>
           }
         />
+        <Box>
+          <Text></Text>
+        </Box>
         <DatePicker
           locale="ko"
           showIcon
@@ -84,12 +89,8 @@ const DateSelect = ({ startDate, endDate, setStartDate, setEndDate }) => {
           }
         />
       </Flex>
-      <Flex textAlign="center" display="flex" justifyContent="center">
-        <Button colorScheme="orange" w="50%" size="md" mt="20px">
-          검색
-        </Button>
-      </Flex>
     </Container>
   );
 };
+
 export default DateSelect;
