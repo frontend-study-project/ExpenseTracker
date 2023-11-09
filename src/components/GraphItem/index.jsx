@@ -1,16 +1,18 @@
-import React from 'react';
-import ReactApexChart from 'react-apexcharts';
-import 'react-datepicker/dist/react-datepicker.css';
+import ReactApexChart from "react-apexcharts";
+import { expense } from "../../utils/data/expense";
 
 const GraphItem = () => {
+  // 도넛차트 데이터!!
   const donutData = {
-    series: [40, 20, 10, 25, 5],
+    series: expense.map((item) => item.amount),
     options: {
       chart: {
-        type: 'donut',
+        type: "donut",
+        height: 1000,
+        width: 1000,
       },
       legend: {
-        position: 'bottom',
+        position: "bottom",
       },
       responsive: [
         {
@@ -25,30 +27,40 @@ const GraphItem = () => {
               total: {
                 showAlways: true,
                 show: true,
-                label: 'Monthly',
-                fontSize: '12px',
-                color: 'red',
+                label: "Monthly",
+                fontSize: "12px",
+                color: "red",
               },
               value: {
-                fontSize: '22px',
+                fontSize: "22px",
                 show: true,
-                color: 'blue',
+                color: "blue",
               },
             },
           },
         },
       },
-      labels: ['Food Expenses', 'Shopping', 'Hobby', 'Transportation Expenses', 'Insurance Cost'],
+      labels: [
+        "Food Expenses",
+        "Shopping",
+        "Hobby",
+        "Transportation Expenses",
+        "Insurance Cost",
+      ],
       title: {
-        text: 'Expense Details',
-        align: 'center',
+        text: "지출 상세 내역",
+        align: "center",
       },
     },
   };
-
   return (
     <div id="chart">
-      <ReactApexChart options={donutData.options} series={donutData.series} type="donut" width="400" />
+      <ReactApexChart
+        options={donutData.options}
+        series={donutData.series}
+        type="donut"
+        width="400"
+      />
     </div>
   );
 };

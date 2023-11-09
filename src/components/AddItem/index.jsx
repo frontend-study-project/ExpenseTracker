@@ -1,11 +1,31 @@
-import React, { useState } from 'react';
-import { AddIcon } from '@chakra-ui/icons';
-import { Container, Text, IconButton, Box, Spacer, Flex, Button, NumberInputField, NumberInput, Input, VStack, Select } from '@chakra-ui/react';
-import { categoryList } from '../../data/categoryList';
+import React, { useState } from "react";
+import { AddIcon } from "@chakra-ui/icons";
+import {
+  Container,
+  Text,
+  IconButton,
+  Box,
+  Spacer,
+  Flex,
+  Button,
+  NumberInputField,
+  NumberInput,
+  Input,
+  VStack,
+  Select,
+} from "@chakra-ui/react";
+import { categoryList } from "../../data/categoryList";
 
-const AddItem = ({ format, parse, value, setValue, realItems, setRealItems }) => {
+const AddItem = ({
+  format,
+  parse,
+  value,
+  setValue,
+  realItems,
+  setRealItems,
+}) => {
   const [isAdd, setAdd] = useState(false);
-  const handleChange = e => {
+  const handleChange = (e) => {
     setValue(e.target.value);
   };
   console.log(realItems.description);
@@ -27,7 +47,15 @@ const AddItem = ({ format, parse, value, setValue, realItems, setRealItems }) =>
             </Text>
           </Box>
           <Spacer />
-          <IconButton aria-label="Add List" colorScheme="blue" size="sm" isRound={true} icon={<AddIcon />} className={isAdd ? 'isAdd' : ''} onClick={() => setAdd(e => !e)} />
+          <IconButton
+            aria-label="Add List"
+            colorScheme="blue"
+            size="sm"
+            isRound={true}
+            icon={<AddIcon />}
+            className={isAdd ? "isAdd" : ""}
+            onClick={() => setAdd((e) => !e)}
+          />
         </Flex>
       </Container>
       {isAdd && (
@@ -48,13 +76,25 @@ const AddItem = ({ format, parse, value, setValue, realItems, setRealItems }) =>
               <Text fontSize="sm" color="gray.500">
                 Description
               </Text>
-              <Input size="sm" borderColor="gray.300" errorBorderColor="red.300" placeholder="내용을 입력 하세요." value={realItems.description} onChange={handleChange} />
+              <Input
+                size="sm"
+                borderColor="gray.300"
+                errorBorderColor="red.300"
+                placeholder="내용을 입력 하세요."
+                value={realItems.description}
+                onChange={handleChange}
+              />
             </Box>
             <Box w="100%">
               <Text fontSize="sm" color="gray.500">
                 Amount
               </Text>
-              <NumberInput onChange={valueString => setValue(parse(valueString))} value={format(value)} max={50} min={0}>
+              <NumberInput
+                onChange={(valueString) => setValue(parse(valueString))}
+                value={format(value)}
+                max={50}
+                min={0}
+              >
                 <NumberInputField />
               </NumberInput>
             </Box>
@@ -62,7 +102,13 @@ const AddItem = ({ format, parse, value, setValue, realItems, setRealItems }) =>
               <Text fontSize="sm" color="gray.500">
                 Date
               </Text>
-              <Input size="sm" borderColor="gray.300" errorBorderColor="red.300" type="date" placeholder="Select Date" />
+              <Input
+                size="sm"
+                borderColor="gray.300"
+                errorBorderColor="red.300"
+                type="date"
+                placeholder="Select Date"
+              />
             </Box>
             <Button colorScheme="blue" w="100%" size="sm" mt="10px">
               Add
@@ -73,5 +119,4 @@ const AddItem = ({ format, parse, value, setValue, realItems, setRealItems }) =>
     </>
   );
 };
-
 export default AddItem;

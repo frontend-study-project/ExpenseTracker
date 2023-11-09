@@ -1,26 +1,36 @@
-import React from 'react';
-import { Container, Text, Flex, Box } from '@chakra-ui/react';
-import DatePicker, { registerLocale } from 'react-datepicker';
-import ko from 'date-fns/locale/ko';
+import React from "react";
+import { Container, Text, Flex, Box } from "@chakra-ui/react";
+import DatePicker, { registerLocale } from "react-datepicker";
+import ko from "date-fns/locale/ko";
 
 const DateSelect = ({ startDate, endDate, setStartDate, setEndDate }) => {
-  registerLocale('ko', ko);
+  registerLocale("ko", ko);
 
   return (
     <Container>
       <Flex>
         <DatePicker
           showIcon
-          dateFormat={'yyyy년 MM월 dd일'}
+          dateFormat={"yyyy년 MM월 dd일"}
           locale="ko"
           selected={startDate}
-          onChange={date => setStartDate(date)}
+          onChange={(date) => setStartDate(date)}
           selectsStart
           startDate={startDate}
           icon={
-            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 50 40">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1em"
+              height="1em"
+              viewBox="0 0 50 40"
+            >
               <mask id="ipSApplication0">
-                <g fill="none" stroke="#fff" strokeLinejoin="round" strokeWidth="4">
+                <g
+                  fill="none"
+                  stroke="#fff"
+                  strokeLinejoin="round"
+                  strokeWidth="4"
+                >
                   <path strokeLinecap="round" d="M40.04 22v20h-32V22"></path>
                   <path
                     fill="#fff"
@@ -28,7 +38,11 @@ const DateSelect = ({ startDate, endDate, setStartDate, setEndDate }) => {
                   ></path>
                 </g>
               </mask>
-              <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSApplication0)"></path>
+              <path
+                fill="currentColor"
+                d="M0 0h48v48H0z"
+                mask="url(#ipSApplication0)"
+              ></path>
             </svg>
           }
         />
@@ -38,17 +52,27 @@ const DateSelect = ({ startDate, endDate, setStartDate, setEndDate }) => {
         <DatePicker
           locale="ko"
           showIcon
-          dateFormat={'yyyy년 MM월 dd일'}
+          dateFormat={"yyyy년 MM월 dd일"}
           selected={endDate}
-          onChange={date => setEndDate(date)}
+          onChange={(date) => setEndDate(date)}
           selectsEnd
           startDate={startDate}
           endDate={endDate}
           minDate={startDate}
           icon={
-            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 50 40">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="1em"
+              height="1em"
+              viewBox="0 0 50 40"
+            >
               <mask id="ipSApplication0">
-                <g fill="none" stroke="#fff" strokeLinejoin="round" strokeWidth="4">
+                <g
+                  fill="none"
+                  stroke="#fff"
+                  strokeLinejoin="round"
+                  strokeWidth="4"
+                >
                   <path strokeLinecap="round" d="M40.04 22v20h-32V22"></path>
                   <path
                     fill="#fff"
@@ -56,7 +80,11 @@ const DateSelect = ({ startDate, endDate, setStartDate, setEndDate }) => {
                   ></path>
                 </g>
               </mask>
-              <path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSApplication0)"></path>
+              <path
+                fill="currentColor"
+                d="M0 0h48v48H0z"
+                mask="url(#ipSApplication0)"
+              ></path>
             </svg>
           }
         />
