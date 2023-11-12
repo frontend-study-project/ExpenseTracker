@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Text, Accordion, Box } from '@chakra-ui/react';
 
 import ListItem from '../ListItem';
@@ -6,6 +6,8 @@ import { groupByDate, sortByDate, filterByDate } from '../../utils/function/filt
 
 const List = ({ items, setItems, startDate, endDate }) => {
   const data = filterByDate(sortByDate(groupByDate(items)), [startDate, endDate]);
+
+  const [isEditing, setIsEditing] = useState(-1);
 
   return (
     <Container>
@@ -16,7 +18,14 @@ const List = ({ items, setItems, startDate, endDate }) => {
               {group.date}
             </Text>
             {group.contents.map((item, key) => (
-              <ListItem key={key} item={item} items={items} setItems={setItems} />
+              <ListItem
+                key={key}
+                item={item}
+                items={items}
+                setItems={setItems}
+                isEditing={isEditing}
+                setIsEditing={setIsEditing}
+              />
             ))}
           </Accordion>
         ))
