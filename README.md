@@ -39,7 +39,7 @@
   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/643036f0-6cd9-4e80-a907-8aa763735a7c"/>
 <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/0daaf152-6d21-4341-928b-9f5848a51ed7"/>
  
-  **setItems([...items, data]);** 가 핵심 -> 깊은 복사로 붙여 넣기!
+  **중요: setItems([...items, data]); -> 깊은 복사로 붙여 넣기!**
 </details>
 
 <details>
@@ -49,7 +49,7 @@
   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/f9047644-23f5-42f8-a862-dc588ea016fe"/>
   <br/>
   
-   **중요**
+   **중요: DatePicker라이브러리 사용**
    <br/>
    <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/05b14f81-06be-4bc4-ab75-f357a32d4e11"/>
     <br/>
@@ -62,7 +62,7 @@
   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/f9047644-23f5-42f8-a862-dc588ea016fe"/>
   <br/>
   
-   **중요 ReactApexChart 라이브러리 사용**
+   **중요: ReactApexChart 라이브러리 사용**
    <br/>
    <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/05b14f81-06be-4bc4-ab75-f357a32d4e11"/>
     <br/>
@@ -71,4 +71,19 @@
    <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/14464e90-9968-48ce-8169-75b68259ce6c"/>
 </details>
 
+<details>
+  <summary>
+  조회한 아이템 컴포넌트
+</summary> 
+  <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/f9047644-23f5-42f8-a862-dc588ea016fe"/>
+  <br/>
+  
+   **중요: List -> ListItem -> Input 컴포넌트**
+   <br/>
+   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/05b14f81-06be-4bc4-ab75-f357a32d4e11"/>
+    <br/>
+   **리스트 클릭시**
+    <br/>
+   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/14464e90-9968-48ce-8169-75b68259ce6c"/>
+</details>
 
