@@ -67,6 +67,7 @@
    <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/05b14f81-06be-4bc4-ab75-f357a32d4e11"/>
     <br/>
    **조회버튼클릭시**
+    <br/>
    <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/14464e90-9968-48ce-8169-75b68259ce6c"/>
 </details>
 
