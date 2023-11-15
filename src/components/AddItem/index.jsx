@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AddIcon } from "@chakra-ui/icons";
 import {
   Container,
@@ -23,19 +23,51 @@ import {
 } from "@chakra-ui/react";
 import { categoryList } from "../../utils/data/categoryList";
 
-const AddItem = ({
-  format,
-  parse,
-  value,
-  setValue,
-  realItems,
-  setRealItems,
-}) => {
-  const { isOpen, onClose, onOpen } = useDisclosure();
+const AddItem = ({ items, setItems }) => {
+  /* useState */
   const [isAdd, setAdd] = useState(false);
+  const [isValid, setIsValid] = useState(false);
+  const { isOpen, onClose, onOpen } = useDisclosure();
+  const [data, setData] = useState({
+    id: 0,
+    category: "",
+    description: "",
+    amount: 0,
+    date: "",
+  });
+
+  /* useEffect */
+  useEffect(() => {
+    console.log("추가하려고 하는 내용 변화 감지: ", data);
+  }, [data]);
+
+  useEffect(() => {
+    console.log(items);
+  }, [items]);
+
+  useEffect(() => {
+    setIsValid(!!data.category && data.description && data.amount && data.date);
+  }, [data]);
+
+  /* Event Function */
   const handleChange = (e) => {
-    setValue(e.target.value);
+    const { name, value } = e.target;
+    setData({
+      ...data,
+      [name]: value,
+    });
   };
+
+  const onClickAddButton = () => {
+    setItems([...items, data]);
+
+    // Add 후 items.id를 +1 하여 고유한 key 값을 부여
+    // setData({ id: items.length + 1, category: '', description: '', amount: 0, date: '' });
+  };
+
+  /* Validate Function */
+  const format = (val) => `₩ ` + val;
+  const parse = (val) => val.replace(/^\₩/, "");
 
   return (
     <>
@@ -65,7 +97,13 @@ const AddItem = ({
               <Text as="span" fontSize="sm" color="gray.500">
                 Category
               </Text>
-              <Select size="sm" placeholder="선택">
+              <Select
+                size="sm"
+                placeholder="선택"
+                name="category"
+                value={data.category}
+                onChange={handleChange}
+              >
                 {categoryList.map((category, key) => (
                   <option key={key}>{category.name}</option>
                 ))}
@@ -80,7 +118,8 @@ const AddItem = ({
                 borderColor="gray.300"
                 errorBorderColor="red.300"
                 placeholder="내용을 입력 하세요."
-                value={realItems.description}
+                name="description"
+                value={data.description}
                 onChange={handleChange}
               />
             </Box>
@@ -88,13 +127,14 @@ const AddItem = ({
               <Text fontSize="sm" color="gray.500">
                 Amount
               </Text>
-              <NumberInput
-                onChange={(valueString) => setValue(parse(valueString))}
-                value={format(value)}
-                max={50}
-                min={0}
-              >
-                <NumberInputField />
+              <NumberInput>
+                <NumberInputField
+                  onChange={handleChange}
+                  name="amount"
+                  value={data.amount}
+                  min={0}
+                  max={99999999}
+                />
               </NumberInput>
             </Box>
             <Box w="100%">
@@ -107,6 +147,9 @@ const AddItem = ({
                 errorBorderColor="red.300"
                 type="date"
                 placeholder="Select Date"
+                name="date"
+                onChange={handleChange}
+                value={data.date}
               />
             </Box>
             <Button
@@ -114,7 +157,8 @@ const AddItem = ({
               w="100%"
               size="sm"
               mt="10px"
-              onClick={onOpen}
+              isDisabled={!isValid}
+              onClick={onClickAddButton & onOpen}
             >
               Add
             </Button>

@@ -10,15 +10,8 @@ import GraphItem from "./components/GraphItem";
 
 function App() {
   const [items, setItems] = useState([]);
-
-  const [realItems, setRealItems] = useState([]);
-
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-
-  const format = (val) => `₩ ` + val;
-  const parse = (val) => val.replace(/^\₩/, "");
-  const [value, setValue] = useState("0");
 
   return (
     <div className="App">
@@ -54,7 +47,7 @@ function App() {
         boxShadow="lg"
       >
         {/*
-         * author : -
+         * author : 조영호
          * function : 날짜 기간 Components
          */}
         <DateSelect
