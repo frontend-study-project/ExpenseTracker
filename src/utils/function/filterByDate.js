@@ -1,3 +1,7 @@
+/*
+ * author : 고정인
+ * function : 날짜 그룹화
+ */
 export const groupByDate = data => {
   return data.reduce((acc, cur) => {
     const obj = {};
@@ -19,20 +23,17 @@ export const groupByDate = data => {
  */
 export const sortByDate = data => {
   return data.sort((a, b) => {
-    return new Date(b.Date) - new Date(a.date);
+    return new Date(b.date) - new Date(a.date);
   });
 };
 
+/*
+ * author : 고정인
+ * function : 날짜(기간) 필터링
+ */
 export const filterByDate = (data, dateRange) => {
   return data.filter(v => {
     const vDate = new Date(v.date);
-    return (
-      vDate.getFullYear() >= dateRange[0].getFullYear() &&
-      vDate.getFullYear() <= dateRange[1].getFullYear() &&
-      vDate.getMonth() >= dateRange[0].getMonth() &&
-      vDate.getMonth() <= dateRange[1].getMonth() &&
-      vDate.getDate() >= dateRange[0].getDate() &&
-      vDate.getDate() <= dateRange[1].getDate()
-    );
+    return vDate >= dateRange[0] && vDate <= dateRange[1];
   });
 };

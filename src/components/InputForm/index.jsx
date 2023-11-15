@@ -1,20 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import {
-  Flex,
-  Text,
-  VStack,
-  Button,
-  Box,
-  Spacer,
-  Input,
-  Select,
-} from "@chakra-ui/react";
+import { Flex, Text, VStack, Button, Box, Spacer, Input, Select } from '@chakra-ui/react';
 
-import { categoryList } from "../../utils/data/categoryList";
+import { categoryList } from '../../utils/data/categoryList';
 
 const InputForm = ({ isAddForm, setIsEditing, items, setItems, item }) => {
   const [itemInfo, setItemInfo] = useState(item);
+
+  const [isValid, setIsValid] = useState(false);
+
+  useEffect(() => {
+    setIsValid(!!itemInfo.category && itemInfo.description && itemInfo.amount && itemInfo.date);
+  }, [itemInfo]);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -45,12 +42,7 @@ const InputForm = ({ isAddForm, setIsEditing, items, setItems, item }) => {
         <Text as="span" fontSize="sm" color="gray.500">
           Category
         </Text>
-        <Select
-          size="sm"
-          name="category"
-          onChange={onChange}
-          value={itemInfo.category}
-        >
+        <Select size="sm" name="category" onChange={onChange} value={itemInfo.category}>
           {categoryList.map((category, key) => (
             <option key={key}>{category.name}</option>
           ))}
@@ -134,6 +126,7 @@ const InputForm = ({ isAddForm, setIsEditing, items, setItems, item }) => {
             colorScheme="blue"
             size="sm"
             p="0 15px"
+            isDisabled={!isValid}
             onClick={onClickUpdateButton}
           >
             Update

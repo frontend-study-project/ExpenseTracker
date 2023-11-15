@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Flex,
   Text,
@@ -13,9 +13,7 @@ import InputForm from "../InputForm";
 import { currencyFormatter } from "../../utils/function/currencyFormatter";
 import { getCategoryIcon } from "../../utils/function/getCategoryIcon";
 
-const ListItem = ({ item, items, setItems }) => {
-  const [isEditing, setIsEditing] = useState(-1);
-
+const ListItem = ({ item, items, setItems, isEditing, setIsEditing }) => {
   const onClickListItem = (id) => {
     if (isEditing === id) setIsEditing(-1);
     else setIsEditing(id);
