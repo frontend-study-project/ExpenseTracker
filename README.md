@@ -47,10 +47,25 @@
  날짜 선택 컴포넌트
 </summary> 
   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/f9047644-23f5-42f8-a862-dc588ea016fe"/>
-
+  <br/>
+  
    **중요**
+   <br/>
    <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/05b14f81-06be-4bc4-ab75-f357a32d4e11"/>
+    <br/>
 </details>
 
+<details>
+  <summary>
+  그래 컴포넌트
+</summary> 
+  <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/f9047644-23f5-42f8-a862-dc588ea016fe"/>
+  <br/>
+  
+   **중요**
+   <br/>
+   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/05b14f81-06be-4bc4-ab75-f357a32d4e11"/>
+    <br/>
+</details>
 
 
