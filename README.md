@@ -82,8 +82,8 @@
    <br/>
    <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/5df3c344-3bf4-4232-8a39-3c3ac05caec8"/>
     <br/>
-   **리스트 컴포넌트 클릭시**
+   **리스트 컴포넌트 클릭시: 수정, 삭제 가능**
     <br/>
-   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/14464e90-9968-48ce-8169-75b68259ce6c"/>
+   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/69320d3c-66ad-4339-b814-4feeb3e6d9d3"/>
 </details>
 
