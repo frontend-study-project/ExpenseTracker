@@ -80,9 +80,9 @@
   
    **중요: List -> ListItem -> Input 컴포넌트**
    <br/>
-   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/05b14f81-06be-4bc4-ab75-f357a32d4e11"/>
+   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/5df3c344-3bf4-4232-8a39-3c3ac05caec8"/>
     <br/>
-   **리스트 클릭시**
+   **리스트 컴포넌트 클릭시**
     <br/>
    <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/14464e90-9968-48ce-8169-75b68259ce6c"/>
 </details>
