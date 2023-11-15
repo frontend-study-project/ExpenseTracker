@@ -14,7 +14,10 @@
 - 소비가 많은 현대 사회에 지출을 줄이고자 구현한 프론트엔드로만 구현한 프로젝트
 
 ## 프로젝트 구성
-- App.jsx
+<summary>
+  App.jsx
+<img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/e7b47109-f659-4cc6-94e7-afc962120780"/>
+</summary> 
 
   
 - 지출 추가 컴포넌트
