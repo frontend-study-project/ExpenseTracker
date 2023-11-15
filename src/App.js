@@ -43,7 +43,16 @@ function App() {
           realItems={realItems}
           setRealItems={setRealItems}
         />
-
+      </VStack>
+      <VStack
+        maxW="500px"
+        m="30px auto"
+        p="50px 40px"
+        borderRadius="30px"
+        spacing="30px"
+        bg="white"
+        boxShadow="lg"
+      >
         {/*
          * author : -
          * function : 날짜 기간 Components

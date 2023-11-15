@@ -13,8 +13,15 @@ import {
   Input,
   VStack,
   Select,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
 } from "@chakra-ui/react";
-import { categoryList } from "../../data/categoryList";
+import { categoryList } from "../../utils/data/categoryList";
 
 const AddItem = ({
   format,
@@ -24,11 +31,11 @@ const AddItem = ({
   realItems,
   setRealItems,
 }) => {
+  const { isOpen, onClose, onOpen } = useDisclosure();
   const [isAdd, setAdd] = useState(false);
   const handleChange = (e) => {
     setValue(e.target.value);
   };
-  console.log(realItems.description);
 
   return (
     <>
@@ -36,14 +43,7 @@ const AddItem = ({
         <Flex alignItems="center">
           <Box>
             <Text as="span" fontWeight="b" fontSize="4xl">
-              {realItems[0].description}의 가격은
-            </Text>
-
-            <Text as="span" fontWeight="b" fontSize="4xl" pr="3px">
-              &#8361;
-            </Text>
-            <Text as="span" fontWeight="b" fontSize="4xl">
-              {realItems[0].amount}
+              지출 내역
             </Text>
           </Box>
           <Spacer />
@@ -60,7 +60,6 @@ const AddItem = ({
       </Container>
       {isAdd && (
         <Container>
-          -
           <VStack>
             <Box w="100%">
               <Text as="span" fontSize="sm" color="gray.500">
@@ -110,10 +109,35 @@ const AddItem = ({
                 placeholder="Select Date"
               />
             </Box>
-            <Button colorScheme="blue" w="100%" size="sm" mt="10px">
+            <Button
+              colorScheme="blue"
+              w="100%"
+              size="sm"
+              mt="10px"
+              onClick={onOpen}
+            >
               Add
             </Button>
           </VStack>
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>알림</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                <VStack>
+                  <Button
+                    mb={4}
+                    colorScheme={"red"}
+                    w={"100%"}
+                    onClick={onClose}
+                  >
+                    추가완료
+                  </Button>
+                </VStack>
+              </ModalBody>
+            </ModalContent>
+          </Modal>
         </Container>
       )}
     </>
