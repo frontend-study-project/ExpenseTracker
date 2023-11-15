@@ -37,6 +37,7 @@
 </summary> 
   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/643036f0-6cd9-4e80-a907-8aa763735a7c"/>
 <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/0daaf152-6d21-4341-928b-9f5848a51ed7"/>
+ 
   **setItems([...items, data]);** 가 핵심 -> 깊은 복사로 붙여 넣기!
 </details>
 
