@@ -42,11 +42,10 @@
 
 <details>
   <summary>
- 날짜 선 컴포넌트
+ 날짜 선택 컴포넌트
 </summary> 
-  <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/643036f0-6cd9-4e80-a907-8aa763735a7c"/>
-<img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/0daaf152-6d21-4341-928b-9f5848a51ed7"/>
-  filterData는 날짜를 선택하고 나서 데이터 저장 state
+  <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/f9047644-23f5-42f8-a862-dc588ea016fe"/>
+   
 </details>
 
 
