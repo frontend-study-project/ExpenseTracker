@@ -42,10 +42,6 @@ const AddItem = ({ items, setItems }) => {
   }, [data]);
 
   useEffect(() => {
-    console.log(items);
-  }, [items]);
-
-  useEffect(() => {
     setIsValid(!!data.category && data.description && data.amount && data.date);
   }, [data]);
 
@@ -59,10 +55,17 @@ const AddItem = ({ items, setItems }) => {
   };
 
   const onClickAddButton = () => {
+    console.log("추가한 data", data);
     setItems([...items, data]);
 
     // Add 후 items.id를 +1 하여 고유한 key 값을 부여
-    // setData({ id: items.length + 1, category: '', description: '', amount: 0, date: '' });
+    setData({
+      id: items.length + 1,
+      category: "",
+      description: "",
+      amount: 0,
+      date: "",
+    });
   };
 
   /* Validate Function */
@@ -158,9 +161,12 @@ const AddItem = ({ items, setItems }) => {
               size="sm"
               mt="10px"
               isDisabled={!isValid}
-              onClick={onClickAddButton & onOpen}
+              onClick={() => {
+                onClickAddButton();
+                onOpen();
+              }}
             >
-              Add
+              추가 하기
             </Button>
           </VStack>
           <Modal isOpen={isOpen} onClose={onClose}>
@@ -172,7 +178,7 @@ const AddItem = ({ items, setItems }) => {
                 <VStack>
                   <Button
                     mb={4}
-                    colorScheme={"red"}
+                    colorScheme={"blue"}
                     w={"100%"}
                     onClick={onClose}
                   >

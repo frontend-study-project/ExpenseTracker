@@ -1,10 +1,12 @@
 import ReactApexChart from "react-apexcharts";
 import { expense } from "../../utils/data/expense";
 
-const GraphItem = () => {
+const GraphItem = ({ items }) => {
+  console.log("graph", items);
   // 도넛차트 데이터!!
+  var acum = [];
   const donutData = {
-    series: expense.map((item) => item.amount),
+    series: items.map((item) => item.amount),
     options: {
       chart: {
         type: "donut",
@@ -40,13 +42,7 @@ const GraphItem = () => {
           },
         },
       },
-      labels: [
-        "Food Expenses",
-        "Shopping",
-        "Hobby",
-        "Transportation Expenses",
-        "Insurance Cost",
-      ],
+      labels: items.map((item) => item.category),
       title: {
         text: "지출 상세 내역",
         align: "center",

@@ -12,7 +12,7 @@ function App() {
   const [items, setItems] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-
+  const [filterData, setFilterData] = useState([]);
   return (
     <div className="App">
       <VStack
@@ -28,14 +28,7 @@ function App() {
          * author : 이수찬
          * function : Item 추가 Components
          */}
-        <AddItem
-          format={format}
-          parse={parse}
-          value={value}
-          setValue={setValue}
-          realItems={realItems}
-          setRealItems={setRealItems}
-        />
+        <AddItem items={items} setItems={setItems} />
       </VStack>
       <VStack
         maxW="500px"
@@ -51,6 +44,8 @@ function App() {
          * function : 날짜 기간 Components
          */}
         <DateSelect
+          items={items}
+          setFilterData={setFilterData}
           startDate={startDate}
           endDate={endDate}
           setStartDate={setStartDate}
@@ -61,15 +56,15 @@ function App() {
          * author : 조영호
          * function : 통계 도넛차트 Components
          */}
-        <GraphItem />
+        <GraphItem items={filterData} />
 
         {/*
          * author : 고정인
          * function : 추가된 Item 리스트 Components
          */}
         <List
-          items={items}
-          setItems={setItems}
+          filterData={filterData}
+          setFilterData={setFilterData}
           startDate={startDate}
           endDate={endDate}
         />

@@ -8,35 +8,29 @@ import {
   filterByDate,
 } from "../../utils/function/filterByDate";
 
-const List = ({ items, setItems, startDate, endDate }) => {
-  const data = filterByDate(sortByDate(groupByDate(items)), [
-    startDate,
-    endDate,
-  ]);
+const List = ({ filterData, setFilterData, startDate, endDate }) => {
   useEffect(() => {
-    console.log("items", items);
-    console.log("필터링된 items", data);
-  }, [items]);
+    console.log("필터링된 items", filterData);
+  }, [filterData]);
   const [isEditing, setIsEditing] = useState(-1);
 
   return (
     <Container>
-      {data.length ? (
-        data.map((group, key) => (
+      {filterData.length ? (
+        filterData.map((group, key) => (
           <Accordion key={key} pb="20px">
             <Text fontSize="md" color="gray.500">
               {group.date}
             </Text>
-            {group.contents.map((item, key) => (
-              <ListItem
-                key={key}
-                item={item}
-                items={items}
-                setItems={setItems}
-                isEditing={isEditing}
-                setIsEditing={setIsEditing}
-              />
-            ))}
+
+            <ListItem
+              key={key}
+              item={group}
+              items={filterData}
+              setItems={setFilterData}
+              isEditing={isEditing}
+              setIsEditing={setIsEditing}
+            />
           </Accordion>
         ))
       ) : (

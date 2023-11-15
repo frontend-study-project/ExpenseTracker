@@ -1,11 +1,26 @@
 import React from "react";
-import { Container, Text, Flex, Box } from "@chakra-ui/react";
+import { Container, Flex, Button } from "@chakra-ui/react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import ko from "date-fns/locale/ko";
-
-const DateSelect = ({ startDate, endDate, setStartDate, setEndDate }) => {
+import {
+  groupByDate,
+  sortByDate,
+  filterByDate,
+} from "../../utils/function/filterByDate";
+const DateSelect = ({
+  items,
+  setFilterData,
+  startDate,
+  endDate,
+  setStartDate,
+  setEndDate,
+}) => {
   registerLocale("ko", ko);
-
+  const onClickDateSelect = () => {
+    setFilterData(
+      filterByDate(sortByDate(groupByDate(items)), [startDate, endDate])
+    );
+  };
   return (
     <Container>
       <Flex>
@@ -46,9 +61,7 @@ const DateSelect = ({ startDate, endDate, setStartDate, setEndDate }) => {
             </svg>
           }
         />
-        <Box>
-          <Text></Text>
-        </Box>
+
         <DatePicker
           locale="ko"
           showIcon
@@ -89,6 +102,17 @@ const DateSelect = ({ startDate, endDate, setStartDate, setEndDate }) => {
           }
         />
       </Flex>
+      <Button
+        colorScheme="blue"
+        w="100%"
+        size="sm"
+        mt="10px"
+        onClick={() => {
+          onClickDateSelect();
+        }}
+      >
+        조회
+      </Button>
     </Container>
   );
 };
