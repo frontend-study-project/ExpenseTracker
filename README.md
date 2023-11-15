@@ -57,15 +57,17 @@
 
 <details>
   <summary>
-  그래 컴포넌트
+  그래프 컴포넌트
 </summary> 
   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/f9047644-23f5-42f8-a862-dc588ea016fe"/>
   <br/>
   
-   **중요**
+   **중요 ReactApexChart 라이브러리 사용**
    <br/>
    <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/05b14f81-06be-4bc4-ab75-f357a32d4e11"/>
     <br/>
+   **조회버튼클릭시**
+   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/14464e90-9968-48ce-8169-75b68259ce6c"/>
 </details>
 
 
