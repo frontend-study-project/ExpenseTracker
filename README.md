@@ -21,6 +21,10 @@
   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/e7b47109-f659-4cc6-94e7-afc962120780"/>
   <br/>
   filterData는 날짜를 선택하고 나서 데이터 저장 state
+  1. AddItem - 지출 추가 컴포넌트
+  2. DateSelect - 날짜 선택 컴포넌트
+  3. GraphItem - 그래프 컴포넌트
+  4. List - 조회한 아이템 컴포넌트
 </details>
 
 <details>
