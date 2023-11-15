@@ -10,6 +10,5 @@
 - 개발 엔진 및 언어: React Framework, javascript , CRA
 - 멤버: 팀장 조영호 팀원: 이수찬, 고정인 
 
-
 ## 프로젝트 설명
  - 
