@@ -75,8 +75,6 @@
   <summary>
   조회한 아이템 컴포넌트
 </summary> 
-  <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/f9047644-23f5-42f8-a862-dc588ea016fe"/>
-  <br/>
   
    **중요: List -> ListItem -> Input 컴포넌트**
    <br/>
