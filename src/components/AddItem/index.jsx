@@ -55,7 +55,6 @@ const AddItem = ({ items, setItems }) => {
   };
 
   const onClickAddButton = () => {
-    console.log("추가한 data", data);
     setItems([...items, data]);
 
     // Add 후 items.id를 +1 하여 고유한 key 값을 부여

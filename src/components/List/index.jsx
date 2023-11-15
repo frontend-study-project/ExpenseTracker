@@ -2,16 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Container, Text, Accordion, Box } from "@chakra-ui/react";
 
 import ListItem from "../ListItem";
-import {
-  groupByDate,
-  sortByDate,
-  filterByDate,
-} from "../../utils/function/filterByDate";
 
-const List = ({ filterData, setFilterData, startDate, endDate }) => {
-  useEffect(() => {
-    console.log("필터링된 items", filterData);
-  }, [filterData]);
+const List = ({ filterData, setFilterData }) => {
   const [isEditing, setIsEditing] = useState(-1);
 
   return (

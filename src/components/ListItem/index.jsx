@@ -18,9 +18,6 @@ const ListItem = ({ item, items, setItems, isEditing, setIsEditing }) => {
     if (isEditing === id) setIsEditing(-1);
     else setIsEditing(id);
   };
-  useEffect(() => {
-    console.log(items);
-  }, [items]);
   return (
     <AccordionItem>
       <AccordionButton onClick={() => onClickListItem(item.id)}>

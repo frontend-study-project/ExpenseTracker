@@ -40,8 +40,6 @@ const InputForm = ({ isAddForm, setIsEditing, items, setItems, item }) => {
   };
 
   const onClickDeleteButton = () => {
-    console.log("onClickDeleteButton", items);
-    console.log("item:", item);
     const newItems = items.filter((v) => v.id !== item.id);
     setItems(newItems);
   };

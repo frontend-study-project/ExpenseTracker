@@ -1,10 +1,6 @@
 import ReactApexChart from "react-apexcharts";
-import { expense } from "../../utils/data/expense";
-
 const GraphItem = ({ items }) => {
-  console.log("graph", items);
   // 도넛차트 데이터!!
-  var acum = [];
   const donutData = {
     series: items.map((item) => item.amount),
     options: {
