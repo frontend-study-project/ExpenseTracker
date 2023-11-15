@@ -11,4 +11,4 @@
 - 멤버: 팀장 조영호 팀원: 이수찬, 고정인 
 
 ## 프로젝트 설명
- - 
+ - <img src="![추가](https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/643036f0-6cd9-4e80-a907-8aa763735a7c)">
