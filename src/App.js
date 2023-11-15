@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import './App.css';
-import { VStack } from '@chakra-ui/react';
-import 'react-datepicker/dist/react-datepicker.css';
+import React, { useState } from "react";
+import "./App.css";
+import { VStack } from "@chakra-ui/react";
+import "react-datepicker/dist/react-datepicker.css";
 
-import DateSelect from './components/DateSelect';
-import List from './components/List';
-import AddItem from './components/AddItem';
-import GraphItem from './components/GraphItem';
+import DateSelect from "./components/DateSelect";
+import List from "./components/List";
+import AddItem from "./components/AddItem";
+import GraphItem from "./components/GraphItem";
 
 function App() {
   const [items, setItems] = useState([]);
@@ -15,18 +15,47 @@ function App() {
 
   return (
     <div className="App">
-      <VStack maxW="500px" m="30px auto" p="50px 40px" borderRadius="30px" spacing="30px" bg="white" boxShadow="lg">
+      <VStack
+        maxW="500px"
+        m="30px auto"
+        p="50px 40px"
+        borderRadius="30px"
+        spacing="30px"
+        bg="white"
+        boxShadow="lg"
+      >
         {/*
          * author : 이수찬
          * function : Item 추가 Components
          */}
-        <AddItem items={items} setItems={setItems} />
-
+        <AddItem
+          format={format}
+          parse={parse}
+          value={value}
+          setValue={setValue}
+          realItems={realItems}
+          setRealItems={setRealItems}
+        />
+      </VStack>
+      <VStack
+        maxW="500px"
+        m="30px auto"
+        p="50px 40px"
+        borderRadius="30px"
+        spacing="30px"
+        bg="white"
+        boxShadow="lg"
+      >
         {/*
          * author : 조영호
          * function : 날짜 기간 Components
          */}
-        <DateSelect startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate} />
+        <DateSelect
+          startDate={startDate}
+          endDate={endDate}
+          setStartDate={setStartDate}
+          setEndDate={setEndDate}
+        />
 
         {/*
          * author : 조영호
@@ -38,7 +67,12 @@ function App() {
          * author : 고정인
          * function : 추가된 Item 리스트 Components
          */}
-        <List items={items} setItems={setItems} startDate={startDate} endDate={endDate} />
+        <List
+          items={items}
+          setItems={setItems}
+          startDate={startDate}
+          endDate={endDate}
+        />
       </VStack>
     </div>
   );

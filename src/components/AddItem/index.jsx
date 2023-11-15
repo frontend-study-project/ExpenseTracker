@@ -13,6 +13,13 @@ import {
   Input,
   VStack,
   Select,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
 } from "@chakra-ui/react";
 import { categoryList } from "../../utils/data/categoryList";
 
@@ -20,6 +27,7 @@ const AddItem = ({ items, setItems }) => {
   /* useState */
   const [isAdd, setAdd] = useState(false);
   const [isValid, setIsValid] = useState(false);
+  const { isOpen, onClose, onOpen } = useDisclosure();
   const [data, setData] = useState({
     id: 0,
     category: "",
@@ -150,11 +158,30 @@ const AddItem = ({ items, setItems }) => {
               size="sm"
               mt="10px"
               isDisabled={!isValid}
-              onClick={onClickAddButton}
+              onClick={onClickAddButton & onOpen}
             >
               Add
             </Button>
           </VStack>
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>알림</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                <VStack>
+                  <Button
+                    mb={4}
+                    colorScheme={"red"}
+                    w={"100%"}
+                    onClick={onClose}
+                  >
+                    추가완료
+                  </Button>
+                </VStack>
+              </ModalBody>
+            </ModalContent>
+          </Modal>
         </Container>
       )}
     </>
