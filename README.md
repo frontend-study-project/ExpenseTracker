@@ -17,8 +17,9 @@
 <details>
   <summary>
   App.jsx
+    <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/e7b47109-f659-4cc6-94e7-afc962120780"/>
 </summary> 
-<img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/e7b47109-f659-4cc6-94e7-afc962120780"/>
+
   
 </details>
 
