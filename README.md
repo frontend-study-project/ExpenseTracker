@@ -16,9 +16,8 @@
 ## 프로젝트 구성
 <summary>
   App.jsx
-<img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/e7b47109-f659-4cc6-94e7-afc962120780"/>
 </summary> 
-
+<img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/e7b47109-f659-4cc6-94e7-afc962120780"/>
   
 - 지출 추가 컴포넌트
 <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/643036f0-6cd9-4e80-a907-8aa763735a7c"/>
