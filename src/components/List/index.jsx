@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
-import { Container, Text, Accordion, Box } from '@chakra-ui/react';
+import React, { useEffect, useState } from "react";
+import { Container, Text, Accordion, Box } from "@chakra-ui/react";
 
-import ListItem from '../ListItem';
-import { groupByDate, sortByDate, filterByDate } from '../../utils/function/filterByDate';
+import ListItem from "../ListItem";
+import {
+  groupByDate,
+  sortByDate,
+  filterByDate,
+} from "../../utils/function/filterByDate";
 
 const List = ({ items, setItems, startDate, endDate }) => {
-  const data = filterByDate(sortByDate(groupByDate(items)), [startDate, endDate]);
-
+  const data = filterByDate(sortByDate(groupByDate(items)), [
+    startDate,
+    endDate,
+  ]);
+  useEffect(() => {
+    console.log("items", items);
+    console.log("필터링된 items", data);
+  }, [items]);
   const [isEditing, setIsEditing] = useState(-1);
 
   return (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Flex,
   Text,
@@ -18,7 +18,9 @@ const ListItem = ({ item, items, setItems, isEditing, setIsEditing }) => {
     if (isEditing === id) setIsEditing(-1);
     else setIsEditing(id);
   };
-
+  useEffect(() => {
+    console.log(items);
+  }, [items]);
   return (
     <AccordionItem>
       <AccordionButton onClick={() => onClickListItem(item.id)}>
