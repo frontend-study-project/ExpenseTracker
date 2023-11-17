@@ -1,28 +1,32 @@
-import React, { useEffect, useState } from "react";
-import { Container, Text, Accordion, Box } from "@chakra-ui/react";
+import React, { useState } from 'react';
+import { Container, Text, Accordion, Box } from '@chakra-ui/react';
 
-import ListItem from "../ListItem";
+import ListItem from '../ListItem';
+import { groupByDate, sortByDate, filterByDate } from '../../utils/function/filterByDate';
 
-const List = ({ filterData, setFilterData }) => {
+const List = ({ items, setItems, startDate, endDate }) => {
+  const data = filterByDate(sortByDate(groupByDate(items)), [startDate, endDate]);
+
   const [isEditing, setIsEditing] = useState(-1);
 
   return (
     <Container>
-      {filterData.length ? (
-        filterData.map((group, key) => (
+      {data.length ? (
+        data.map((group, key) => (
           <Accordion key={key} pb="20px">
             <Text fontSize="md" color="gray.500">
               {group.date}
             </Text>
-
-            <ListItem
-              key={key}
-              item={group}
-              items={filterData}
-              setItems={setFilterData}
-              isEditing={isEditing}
-              setIsEditing={setIsEditing}
-            />
+            {group.contents.map((item, key) => (
+              <ListItem
+                key={key}
+                item={item}
+                items={items}
+                setItems={setItems}
+                isEditing={isEditing}
+                setIsEditing={setIsEditing}
+              />
+            ))}
           </Accordion>
         ))
       ) : (

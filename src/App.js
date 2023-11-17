@@ -63,8 +63,8 @@ function App() {
          * function : 추가된 Item 리스트 Components
          */}
         <List
-          filterData={filterData}
-          setFilterData={setFilterData}
+          items={items}
+          setItems={setItems}
           startDate={startDate}
           endDate={endDate}
         />

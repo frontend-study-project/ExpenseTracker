@@ -4,12 +4,11 @@
  */
 export const groupByDate = (data) => {
   return data.reduce((acc, cur) => {
-    var obj = {};
-
+    const obj = {};
     const foundIndex = acc.findIndex((v) => v.date === cur.date);
     if (foundIndex < 0) {
       obj.date = cur.date;
-      obj = { ...cur };
+      obj.contents = [cur];
       acc.push(obj);
     } else {
       acc[foundIndex].contents.push(cur);
