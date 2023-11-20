@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Container, Text, Accordion, Box } from '@chakra-ui/react';
 
 import ListItem from '../ListItem';
-import { groupByDate, sortByDate, filterByDate } from '../../utils/function/filterByDate';
+import { filterByDate } from '../../utils/function/filterByDate';
+import { groupByDate, sortByDate } from '../../utils/function/groupByDate';
 
 const List = ({ items, setItems, startDate, endDate }) => {
   const data = filterByDate(sortByDate(groupByDate(items)), [startDate, endDate]);

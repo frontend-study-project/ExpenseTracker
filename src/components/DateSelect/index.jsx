@@ -2,11 +2,8 @@ import React from "react";
 import { Container, Flex, Button } from "@chakra-ui/react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import ko from "date-fns/locale/ko";
-import {
-  groupByDate,
-  sortByDate,
-  filterByDate,
-} from "../../utils/function/filterByDate";
+import {filterByDate} from "../../utils/function/filterByDate";
+import { groupByDate, sortByDate } from "../../utils/function/groupByDate";
 const DateSelect = ({
   items,
   setFilterData,
