@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { AddIcon } from "@chakra-ui/icons";
+import React, { useEffect, useState } from 'react';
+import { AddIcon } from '@chakra-ui/icons';
 import {
   Container,
   Text,
@@ -20,8 +20,8 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
-} from "@chakra-ui/react";
-import { categoryList } from "../../utils/data/categoryList";
+} from '@chakra-ui/react';
+import { categoryList } from '../../utils/data/categoryList';
 
 const AddItem = ({ items, setItems }) => {
   /* useState */
@@ -30,46 +30,88 @@ const AddItem = ({ items, setItems }) => {
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [data, setData] = useState({
     id: 0,
-    category: "",
-    description: "",
-    amount: 0,
-    date: "",
+    category: '',
+    description: '',
+    amount: '',
+    date: '',
   });
+  const [KRW, setKRW] = useState('');
 
   /* useEffect */
   useEffect(() => {
-    console.log("추가하려고 하는 내용 변화 감지: ", data);
+    console.log('추가하려는 데이터 감지 (data)::: ', data);
   }, [data]);
+
+  useEffect(() => {
+    // Add 후 items.id를 +1 하여 고유한 key 값을 부여
+    setData({
+      id: items.length + 1,
+      category: '',
+      description: '',
+      amount: '',
+      date: '',
+    });
+    // items의 데이터가 변경되는 것을 useEffect로 확인
+    console.log('추가 된 데이터 (items)::: ', items);
+  }, [items]);
 
   useEffect(() => {
     setIsValid(!!data.category && data.description && data.amount && data.date);
   }, [data]);
 
   /* Event Function */
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target;
-    setData({
-      ...data,
-      [name]: value,
-    });
+    if (name !== 'amount') {
+      setData({
+        ...data,
+        [name]: value,
+      });
+    } else {
+      // Amount에서 숫자 타입이 아닐 경우 Data Setting 방어
+      if (/^\d+$/.test(value)) {
+        setData({
+          ...data,
+          [name]: value,
+        });
+      }
+    }
+
+    // Amount 입력 시 원화[￦] 단위 표시
+    if (name === 'amount') {
+      const tbxKRW = convertAmount(Number(value));
+      setKRW(tbxKRW + '원');
+    }
   };
 
   const onClickAddButton = () => {
     setItems([...items, data]);
-
-    // Add 후 items.id를 +1 하여 고유한 key 값을 부여
-    setData({
-      id: items.length + 1,
-      category: "",
-      description: "",
-      amount: 0,
-      date: "",
-    });
   };
 
-  /* Validate Function */
-  const format = (val) => `₩ ` + val;
-  const parse = (val) => val.replace(/^\₩/, "");
+  // Amount 입력 값 원화 단위 표시 function
+  const convertAmount = amount => {
+    const units = ['', '십', '백', '천', '만', '억', '조', '경'];
+    const digitNames = ['', '', '이', '삼', '사', '오', '육', '칠', '팔', '구'];
+
+    const amountArray = Array.from(String(amount), Number);
+
+    let result = '';
+    let unitIndex = 0;
+
+    for (let i = amountArray.length - 1; i >= 0; i--) {
+      const digit = amountArray[i];
+      const unit = units[unitIndex];
+
+      if (digit !== 0) {
+        result = digitNames[digit] + unit + result;
+      }
+
+      if (unitIndex < units.length - 1) {
+        unitIndex++;
+      }
+    }
+    return result;
+  };
 
   return (
     <>
@@ -81,15 +123,7 @@ const AddItem = ({ items, setItems }) => {
             </Text>
           </Box>
           <Spacer />
-          <IconButton
-            aria-label="Add List"
-            colorScheme="blue"
-            size="sm"
-            isRound={true}
-            icon={<AddIcon />}
-            className={isAdd ? "isAdd" : ""}
-            onClick={() => setAdd((e) => !e)}
-          />
+          <IconButton aria-label="Add List" colorScheme="blue" size="sm" isRound={true} icon={<AddIcon />} className={isAdd ? 'isAdd' : ''} onClick={() => setAdd(e => !e)} />
         </Flex>
       </Container>
       {isAdd && (
@@ -99,13 +133,7 @@ const AddItem = ({ items, setItems }) => {
               <Text as="span" fontSize="sm" color="gray.500">
                 Category
               </Text>
-              <Select
-                size="sm"
-                placeholder="선택"
-                name="category"
-                value={data.category}
-                onChange={handleChange}
-              >
+              <Select size="sm" placeholder="선택" name="category" value={data.category} onChange={handleChange}>
                 {categoryList.map((category, key) => (
                   <option key={key}>{category.name}</option>
                 ))}
@@ -129,30 +157,17 @@ const AddItem = ({ items, setItems }) => {
               <Text fontSize="sm" color="gray.500">
                 Amount
               </Text>
-              <NumberInput>
-                <NumberInputField
-                  onChange={handleChange}
-                  name="amount"
-                  value={data.amount}
-                  min={0}
-                  max={99999999}
-                />
-              </NumberInput>
+              {/* <NumberInput>
+                <NumberInputField onChange={handleChange} name="amount" value={data.amount} min={0} max={99999999} />
+              </NumberInput> */}
+              <Input size="sm" borderColor="gray.300" errorBorderColor="red.300" placeholder="금액을 입력 하세요." name="amount" value={data.amount} onChange={handleChange} />
             </Box>
+            {KRW && <div>{KRW}</div>}
             <Box w="100%">
               <Text fontSize="sm" color="gray.500">
                 Date
               </Text>
-              <Input
-                size="sm"
-                borderColor="gray.300"
-                errorBorderColor="red.300"
-                type="date"
-                placeholder="Select Date"
-                name="date"
-                onChange={handleChange}
-                value={data.date}
-              />
+              <Input size="sm" borderColor="gray.300" errorBorderColor="red.300" type="date" placeholder="Select Date" name="date" onChange={handleChange} value={data.date} />
             </Box>
             <Button
               colorScheme="blue"
@@ -175,12 +190,7 @@ const AddItem = ({ items, setItems }) => {
               <ModalCloseButton />
               <ModalBody>
                 <VStack>
-                  <Button
-                    mb={4}
-                    colorScheme={"blue"}
-                    w={"100%"}
-                    onClick={onClose}
-                  >
+                  <Button mb={4} colorScheme={'blue'} w={'100%'} onClick={onClose}>
                     추가완료
                   </Button>
                 </VStack>

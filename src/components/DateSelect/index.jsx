@@ -2,22 +2,10 @@ import React from "react";
 import { Container, Flex, Button } from "@chakra-ui/react";
 import DatePicker, { registerLocale } from "react-datepicker";
 import ko from "date-fns/locale/ko";
-import {filterByDate} from "../../utils/function/filterByDate";
-import { groupByDate, sortByDate } from "../../utils/function/groupByDate";
-const DateSelect = ({
-  items,
-  setFilterData,
-  startDate,
-  endDate,
-  setStartDate,
-  setEndDate,
-}) => {
+
+const DateSelect = ({ startDate, endDate, setStartDate, setEndDate }) => {
   registerLocale("ko", ko);
-  const onClickDateSelect = () => {
-    setFilterData(
-      filterByDate(sortByDate(groupByDate(items)), [startDate, endDate])
-    );
-  };
+
   return (
     <Container>
       <Flex>
@@ -99,17 +87,6 @@ const DateSelect = ({
           }
         />
       </Flex>
-      <Button
-        colorScheme="blue"
-        w="100%"
-        size="sm"
-        mt="10px"
-        onClick={() => {
-          onClickDateSelect();
-        }}
-      >
-        조회
-      </Button>
     </Container>
   );
 };
