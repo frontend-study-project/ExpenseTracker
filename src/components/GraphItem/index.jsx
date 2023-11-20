@@ -1,8 +1,49 @@
 import ReactApexChart from "react-apexcharts";
-const GraphItem = ({ items }) => {
-  // 도넛차트 데이터!!
+import {
+  filterByDate,
+  groupByDate,
+  sortByDate,
+} from "../../utils/function/filterByDate";
+import { useCallback, useEffect, useState } from "react";
+const GraphItem = ({ items, startDate, endDate }) => {
+  const [donut, setDonut] = useState([]);
+  const data = filterByDate(sortByDate(groupByDate(items)), [
+    startDate,
+    endDate,
+  ]);
+  const newmakeArray = useCallback(() => {
+    let amountArray = [];
+    data.map((item) =>
+      item.contents.map((sub) => amountArray.push(sub.amount))
+    );
+    return amountArray;
+  }, []);
+
+  const fetchData = useCallback(() => {
+    const newArray = newmakeArray();
+    console.log(newArray);
+    setDonut([...newArray]);
+  }, [newmakeArray]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  useEffect(() => {
+    console.log(data);
+    console.log(data.map((item) => item.contents.map((sub) => sub.amount)));
+  }, [data]);
+  // 도넛차트 데이터
   const donutData = {
-    series: items.map((item) => item.amount),
+    series: data.map((item) => item.contents.map((sub) => sub.amount)),
+    // series: donut.map((item) => item),
+    // {
+    //   data:
+    //     data.length > 0
+    //       ? data.map((item) => item.contents.map((sub) => sub.amount))
+    //       : null,
+    // },
+
     options: {
       chart: {
         type: "donut",
@@ -38,7 +79,7 @@ const GraphItem = ({ items }) => {
           },
         },
       },
-      labels: items.map((item) => item.category),
+      labels: data.map((item) => item.contents.map((sub) => sub.category)),
       title: {
         text: "지출 상세 내역",
         align: "center",
