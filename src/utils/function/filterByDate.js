@@ -13,9 +13,7 @@ const isSameDay = (date1, date2) => {
 export const filterByDate = (data, dateRange) => {
   return data.filter((v) => {
     const vDate = new Date(v.date);
-
-    if (vDate >= dateRange[0] && vDate <= dateRange[1])
-      return true;
+    if (vDate >= dateRange[0] && vDate <= dateRange[1]) return true;
     else if (isSameDay(vDate, dateRange[0]) || isSameDay(vDate, dateRange[1]))
       return true;
 

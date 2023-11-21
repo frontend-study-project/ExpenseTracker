@@ -1,48 +1,18 @@
 import ReactApexChart from "react-apexcharts";
-import {
-  filterByDate,
-  groupByDate,
-  sortByDate,
-} from "../../utils/function/filterByDate";
-import { useCallback, useEffect, useState } from "react";
+import { filterByDate } from "../../utils/function/filterByDate";
+import { useEffect, useState } from "react";
+import { groupByCategory } from "../../utils/function/groupByCategory";
 const GraphItem = ({ items, startDate, endDate }) => {
-  const [donut, setDonut] = useState([]);
-  const data = filterByDate(sortByDate(groupByDate(items)), [
-    startDate,
-    endDate,
-  ]);
-  const newmakeArray = useCallback(() => {
-    let amountArray = [];
-    data.map((item) =>
-      item.contents.map((sub) => amountArray.push(sub.amount))
-    );
-    return amountArray;
-  }, []);
-
-  const fetchData = useCallback(() => {
-    const newArray = newmakeArray();
-    console.log(newArray);
-    setDonut([...newArray]);
-  }, [newmakeArray]);
+  const data = groupByCategory(filterByDate(items, [startDate, endDate]));
 
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
-  useEffect(() => {
-    console.log(data);
-    console.log(data.map((item) => item.contents.map((sub) => sub.amount)));
+    console.log(items);
+    console.log("도넛 그래프에 온 데이터:", data);
   }, [data]);
+
   // 도넛차트 데이터
   const donutData = {
-    series: data.map((item) => item.contents.map((sub) => sub.amount)),
-    // series: donut.map((item) => item),
-    // {
-    //   data:
-    //     data.length > 0
-    //       ? data.map((item) => item.contents.map((sub) => sub.amount))
-    //       : null,
-    // },
+    series: data.map((item) => item.amount),
 
     options: {
       chart: {
@@ -66,7 +36,7 @@ const GraphItem = ({ items, startDate, endDate }) => {
               total: {
                 showAlways: true,
                 show: true,
-                label: "Monthly",
+                label: "지출내역",
                 fontSize: "12px",
                 color: "red",
               },
@@ -79,7 +49,7 @@ const GraphItem = ({ items, startDate, endDate }) => {
           },
         },
       },
-      labels: data.map((item) => item.contents.map((sub) => sub.category)),
+      labels: data.map((item) => item.category),
       title: {
         text: "지출 상세 내역",
         align: "center",
