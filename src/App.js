@@ -9,8 +9,11 @@ import AddItem from "./components/AddItem";
 import GraphItem from "./components/GraphItem";
 
 function App() {
+  const today = new Date();
   const [items, setItems] = useState([]);
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(
+    new Date(today.getFullYear(), today.getMonth())
+  );
   const [endDate, setEndDate] = useState(new Date());
   return (
     <div className="App">

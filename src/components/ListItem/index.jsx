@@ -39,7 +39,7 @@ const ListItem = ({ item, items, setItems, isEditing, setIsEditing }) => {
               {item.category}
             </Text>
           </Box>
-          <Text fontSize="xl">{currencyFormatter(item.amount)}</Text>
+          <Text fontSize="xl">{currencyFormatter(item.amount)}원</Text>
         </Flex>
       </AccordionButton>
       {isEditing === item.id && (
