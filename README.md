@@ -30,7 +30,6 @@
   <br/>
   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/aeb58e13-1993-4c80-b282-058301884336"/>
   <br/>
-  
   **filterData삭제 -> 이유: 조회버튼을 없애고 데이터를 입력하자마자 조회가 되게끔 구현**
   <br/>
   
