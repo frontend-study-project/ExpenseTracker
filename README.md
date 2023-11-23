@@ -79,8 +79,13 @@
 </summary> 
   
    **중요: ReactApexChart 라이브러리 사용**
-   <br/>
-   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/18c0c10a-149a-44bc-bdd7-4b0f5ffeac47"/>
+   [변경전] 
+    <br/>
+    <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/18c0c10a-149a-44bc-bdd7-4b0f5ffeac47"/>
+    <br/>
+    [변경후]
+    <br/>
+    <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/72067421-e8cd-4a42-846e-0a4c935d512d"/>
     <br/>
    **조회버튼클릭시**
     <br/>
