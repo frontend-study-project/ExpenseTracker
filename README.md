@@ -80,6 +80,7 @@
 </summary> 
   
    **중요: ReactApexChart 라이브러리 사용**
+   <br/>
    [변경전] 
     <br/>
     <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/18c0c10a-149a-44bc-bdd7-4b0f5ffeac47"/>
