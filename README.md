@@ -18,10 +18,17 @@
   <summary>
   App.jsx
 </summary> 
+  [변경전]
   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/e7b47109-f659-4cc6-94e7-afc962120780"/>
   <br/>
+  [변경후]
+  <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/aeb58e13-1993-4c80-b282-058301884336"/>
+  <br/>
+  [변경전]
   filterData는 날짜를 선택하고 나서 데이터 저장 state
   <br/>
+  [변경후]
+  filterData삭제 -> 이유: 조회버튼을 없애고 데이터를 입력하자마자 조회가 되게끔 구현
   
   **1.AddItem-지출 추가 컴포넌트**
   <br/>
