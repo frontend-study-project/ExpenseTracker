@@ -54,6 +54,7 @@
   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/0daaf152-6d21-4341-928b-9f5848a51ed7"/>
   <br/>
   [변경후]
+  <br/>
   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/499e0794-e047-47f8-ad9c-4aa69aa1f4d2"/>
   <br/>
   **중요: setItems([...items, data]); -> 깊은 복사로 붙여 넣기!**
