@@ -89,9 +89,15 @@
     <br/>
     <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/72067421-e8cd-4a42-846e-0a4c935d512d"/>
     <br/>
-   **조회버튼클릭시**
+    [변경전] 
+    <br/>
+    **조회버튼클릭시**
     <br/>
    <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/14464e90-9968-48ce-8169-75b68259ce6c"/>
+    <br/>
+    [변경후]
+    <br/>
+   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/c5d0ab3b-85ed-4a87-ba99-e6ac66605980"/>
 </details>
 
 <details>
