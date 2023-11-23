@@ -97,7 +97,7 @@
     <br/>
     [변경후]
     <br/>
-   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/c5d0ab3b-85ed-4a87-ba99-e6ac66605980"/>
+   <img src="https://github.com/frontend-study-project/ExpenseTracker/assets/91147281/df33c506-41b2-4f39-a75a-56c6609b1add"/>
 </details>
 
 <details>
