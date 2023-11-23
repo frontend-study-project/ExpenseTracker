@@ -10,10 +10,10 @@
 - 개발 엔진 및 언어: React Framework, javascript , CRA , Charka CSS Library
 - 멤버: 팀장 조영호 팀원: 이수찬, 고정인 
 
-## 프로젝트 설명
+## 프로젝트_설명
 - 소비가 많은 현대 사회에 지출을 줄이고자 프론트엔드 기술로로만 구현한 프로젝트
 
-## 프로젝트 구성
+## 프로젝트_구성
 <details>
   <summary>
   App.jsx
