@@ -3,18 +3,22 @@ import "./App.css";
 import { VStack } from "@chakra-ui/react";
 import "react-datepicker/dist/react-datepicker.css";
 
-import DateSelect from "./components/DateSelect";
-import List from "./components/List";
 import AddItem from "./components/AddItem";
+import DateSelect from "./components/DateSelect";
 import GraphItem from "./components/GraphItem";
+import List from "./components/List";
+
+import { expense } from "./utils/data/expense"
 
 function App() {
+  const [items, setItems] = useState(expense);
+
   const today = new Date();
-  const [items, setItems] = useState([]);
   const [startDate, setStartDate] = useState(
     new Date(today.getFullYear(), today.getMonth())
   );
   const [endDate, setEndDate] = useState(new Date());
+  
   return (
     <div className="App">
       <VStack
