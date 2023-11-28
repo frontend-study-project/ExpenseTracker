@@ -8,8 +8,6 @@ import {
   Spacer,
   Flex,
   Button,
-  NumberInputField,
-  NumberInput,
   Input,
   VStack,
   Select,
@@ -20,8 +18,10 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
+  WrapItem,
 } from '@chakra-ui/react';
 import { categoryList } from '../../utils/data/categoryList';
+import { AddCategory } from '../AddCategory';
 
 const AddItem = ({ items, setItems }) => {
   /* useState */
@@ -36,6 +36,7 @@ const AddItem = ({ items, setItems }) => {
     date: '',
   });
   const [KRW, setKRW] = useState('');
+  const [isAlertOpen, onAlertOpen, onAlertClose] = useDisclosure();
 
   /* useEffect */
   useEffect(() => {
@@ -138,6 +139,11 @@ const AddItem = ({ items, setItems }) => {
                   <option key={key}>{category.name}</option>
                 ))}
               </Select>
+              <WrapItem>
+                <Button colorScheme="linkedin" onClick={onAlertOpen}>
+                  카테고리 추가
+                </Button>
+              </WrapItem>
             </Box>
             <Box w="100%">
               <Text fontSize="sm" color="gray.500">
@@ -157,9 +163,6 @@ const AddItem = ({ items, setItems }) => {
               <Text fontSize="sm" color="gray.500">
                 Amount
               </Text>
-              {/* <NumberInput>
-                <NumberInputField onChange={handleChange} name="amount" value={data.amount} min={0} max={99999999} />
-              </NumberInput> */}
               <Input size="sm" borderColor="gray.300" errorBorderColor="red.300" placeholder="금액을 입력 하세요." name="amount" value={data.amount} onChange={handleChange} />
             </Box>
             {KRW && <div>{KRW}</div>}
@@ -197,6 +200,7 @@ const AddItem = ({ items, setItems }) => {
               </ModalBody>
             </ModalContent>
           </Modal>
+          <AddCategory isAlertOpen={isAlertOpen} onAlertClose={onAlertClose} />
         </Container>
       )}
     </>
