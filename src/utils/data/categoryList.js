@@ -1,7 +1,7 @@
 import { PiCoffeeFill } from 'react-icons/pi';
 import { BiSolidMoviePlay, BiDotsHorizontalRounded } from 'react-icons/bi';
 import { AiFillShopping } from 'react-icons/ai';
-import { FaUtensils, FaBus, FaBook, FaHome, FaPhoneAlt, FaGift } from 'react-icons/fa';
+import { FaUtensils, FaBus, FaBook, FaHome, FaPhoneAlt, FaGift, FaGuitar } from 'react-icons/fa';
 
 export const categoryList = [
   {
