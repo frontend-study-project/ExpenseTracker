@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { VStack } from "@chakra-ui/react";
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,20 +7,30 @@ import AddItem from "./components/AddItem";
 import DateSelect from "./components/DateSelect";
 import GraphItem from "./components/GraphItem";
 import List from "./components/List";
-
-import { expense } from "./utils/data/expense"
+import { useDispatch, useSelector } from "react-redux";
+import { expense } from "./utils/data/expense";
+import { minus, plus } from "./redux/user";
 
 function App() {
   const [items, setItems] = useState(expense);
-
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
   const today = new Date();
   const [startDate, setStartDate] = useState(
     new Date(today.getFullYear(), today.getMonth())
   );
   const [endDate, setEndDate] = useState(new Date());
-  
+
+  useEffect(() => {
+    console.log(count);
+  });
   return (
     <div className="App">
+      <div>
+        <button onClick={() => dispatch(minus())}>-</button>
+        Value: {count}
+        <button onClick={() => dispatch(plus())}>+</button>
+      </div>
       <VStack
         maxW="500px"
         m="30px auto"

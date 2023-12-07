@@ -4,7 +4,8 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-
+import store from "./redux/store";
+import { Provider } from "react-redux";
 const theme = extendTheme({
   styles: {
     global: () => ({
@@ -18,7 +19,9 @@ const theme = extendTheme({
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ChakraProvider theme={theme}>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </ChakraProvider>
 );
 
