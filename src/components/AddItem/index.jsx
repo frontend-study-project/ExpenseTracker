@@ -24,6 +24,7 @@ import AddCategory from '../AddCategory';
 const AddItem = ({ items, setItems }) => {
   /********** useState **********/
   const [isValid, setIsValid] = useState(false);
+  const [lastAmount, setLastAmount] = useState('');
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [data, setData] = useState({
     id: 0,
@@ -64,19 +65,17 @@ const AddItem = ({ items, setItems }) => {
         [name]: value,
       });
     } else {
-      // Amount에서 숫자 타입이 아닐 경우 Data Setting 방어
-      if (/^\d+$/.test(value)) {
-        setData({
-          ...data,
-          [name]: value,
-        });
-      }
       // Amount 입력 시 원화[￦] 단위 표시
       if (isNaN(value)) {
         console.log('숫자만 입력 해주세요.');
       } else {
         const tbxKRW = convertAmount(Number(value));
         setKRW(tbxKRW + '원');
+
+        setData({
+          ...data,
+          [name]: value,
+        });
       }
     }
   };
@@ -93,6 +92,9 @@ const AddItem = ({ items, setItems }) => {
   /********** event function **********/
   const onClickAddButton = () => {
     setItems([...items, data]);
+    // 지출내역 제목 최신데이터 Setting
+    setLastAmount([...lastAmount, data.amount]);
+    setKRW('');
   };
   // Amount 입력 값 원화 단위 표시 function
   const convertAmount = amount => {
@@ -126,6 +128,9 @@ const AddItem = ({ items, setItems }) => {
           <Box>
             <Text as="span" fontWeight="b" fontSize="2xl">
               지출 내역
+            </Text>
+            <Text as="span" fontWeight="semibold" fontSize="md" marginLeft="3">
+              ( 최근 지출 금액 : {lastAmount}원 )
             </Text>
           </Box>
           <Spacer />
@@ -167,7 +172,16 @@ const AddItem = ({ items, setItems }) => {
             <Text fontSize="sm" color="gray.500">
               Amount
             </Text>
-            <Input size="sm" borderColor="gray.300" errorBorderColor="red.300" placeholder="금액을 입력 하세요." name="amount" value={data.amount} onChange={handleChange} />
+            <Input
+              size="sm"
+              borderColor="gray.300"
+              errorBorderColor="red.300"
+              placeholder="금액을 입력 하세요."
+              name="amount"
+              type="number"
+              value={data.amount}
+              onChange={handleChange}
+            />
           </Box>
           {KRW && <div>{KRW}</div>}
           <Box w="100%">
