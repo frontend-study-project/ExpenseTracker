@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
-import { Flex, Text, VStack, Button, Box, Spacer, Input, Select } from '@chakra-ui/react';
+import { Flex, Text, VStack, Button, Box, Spacer, Input, Select } from "@chakra-ui/react";
 
-import { categoryList } from '../../utils/data/categoryList';
+import { categoryList } from "../../utils/data/categoryList";
+import { UPDATE_ITEM, DELETE_ITEM, ACTIVE_ITEM } from "../../redux/item";
 
-const InputForm = ({ isAddForm, setIsEditing, items, setItems, item }) => {
+const InputForm = ({ isAddForm, item }) => {
+  const dispatch = useDispatch();
+
   const [itemInfo, setItemInfo] = useState(item);
-
   const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
@@ -22,19 +25,17 @@ const InputForm = ({ isAddForm, setIsEditing, items, setItems, item }) => {
   };
 
   const onClickCancleButton = () => {
-    setIsEditing(-1);
+    dispatch(ACTIVE_ITEM(-1));
   };
 
   const onClickDeleteButton = () => {
-    const newItems = items.filter((v) => v.id !== item.id);
-    setItems(newItems);
-    setIsEditing(-1);
+    dispatch(DELETE_ITEM(item.id));
+    dispatch(ACTIVE_ITEM(-1));
   };
 
   const onClickUpdateButton = () => {
-    const newItems = items.map((v) => (v.id === item.id ? itemInfo : v));
-    setItems(newItems);
-    setIsEditing(-1);
+    dispatch(UPDATE_ITEM(itemInfo));
+    dispatch(ACTIVE_ITEM(-1));
   };
 
   return (
@@ -53,47 +54,19 @@ const InputForm = ({ isAddForm, setIsEditing, items, setItems, item }) => {
         <Text fontSize="sm" color="gray.500">
           Description
         </Text>
-        <Input
-          size="sm"
-          borderColor="gray.300"
-          errorBorderColor="red.300"
-          placeholder="Description"
-          name="description"
-          onChange={onChange}
-          value={itemInfo.description}
-        />
+        <Input size="sm" borderColor="gray.300" errorBorderColor="red.300" placeholder="Description" name="description" onChange={onChange} value={itemInfo.description} />
       </Box>
       <Box w="100%">
         <Text fontSize="sm" color="gray.500">
           Amount
         </Text>
-        <Input
-          size="sm"
-          borderColor="gray.300"
-          errorBorderColor="red.300"
-          type="number"
-          placeholder="Amount"
-          max={0}
-          min={100000000}
-          name="amount"
-          onChange={onChange}
-          value={itemInfo.amount}
-        />
+        <Input size="sm" borderColor="gray.300" errorBorderColor="red.300" type="number" placeholder="Amount" max={0} min={100000000} name="amount" onChange={onChange} value={itemInfo.amount} />
       </Box>
       <Box w="100%">
         <Text fontSize="sm" color="gray.500">
           Date
         </Text>
-        <Input
-          size="sm"
-          borderColor="gray.300"
-          errorBorderColor="red.300"
-          type="date"
-          placeholder="Select Date"
-          name="date"
-          onChange={onChange}
-          value={itemInfo.date}
-        />
+        <Input size="sm" borderColor="gray.300" errorBorderColor="red.300" type="date" placeholder="Select Date" name="date" onChange={onChange} value={itemInfo.date} />
       </Box>
       {isAddForm ? (
         <Button colorScheme="blue" w="100%" size="sm" mt="10px">
@@ -103,33 +76,15 @@ const InputForm = ({ isAddForm, setIsEditing, items, setItems, item }) => {
         <Flex w="100%" mt="10px">
           <Spacer />
           <Spacer />
-          <Button
-            colorScheme="cyan"
-            variant="outline"
-            size="sm"
-            p="0 15px"
-            onClick={onClickCancleButton}
-          >
+          <Button colorScheme="cyan" variant="outline" size="sm" p="0 15px" onClick={onClickCancleButton}>
             Cancle
           </Button>
           <Spacer />
-          <Button
-            colorScheme="red"
-            variant="outline"
-            size="sm"
-            p="0 15px"
-            onClick={onClickDeleteButton}
-          >
+          <Button colorScheme="red" variant="outline" size="sm" p="0 15px" onClick={onClickDeleteButton}>
             Delete
           </Button>
           <Spacer />
-          <Button
-            colorScheme="blue"
-            size="sm"
-            p="0 15px"
-            isDisabled={!isValid}
-            onClick={onClickUpdateButton}
-          >
+          <Button colorScheme="blue" size="sm" p="0 15px" isDisabled={!isValid} onClick={onClickUpdateButton}>
             Update
           </Button>
           <Spacer />

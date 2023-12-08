@@ -1,8 +1,11 @@
 import ReactApexChart from "react-apexcharts";
+import { useSelector } from "react-redux";
 import { filterByDate } from "../../utils/function/filterByDate";
 import { useEffect, useState } from "react";
 import { groupByCategory } from "../../utils/function/groupByCategory";
-const GraphItem = ({ items, startDate, endDate }) => {
+
+const GraphItem = ({ startDate, endDate }) => {
+  const items = useSelector((state) => state.items.items);
   const data = groupByCategory(filterByDate(items, [startDate, endDate]));
 
   useEffect(() => {

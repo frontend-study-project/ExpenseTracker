@@ -1,29 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { AddIcon } from '@chakra-ui/icons';
-import {
-  Container,
-  Text,
-  IconButton,
-  Box,
-  Spacer,
-  Flex,
-  Button,
-  NumberInputField,
-  NumberInput,
-  Input,
-  VStack,
-  Select,
-  useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-} from '@chakra-ui/react';
+import { Container, Text, IconButton, Box, Spacer, Flex, Button, Input, VStack, Select, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody } from "@chakra-ui/react";
 import { categoryList } from '../../utils/data/categoryList';
+import { useDispatch, useSelector } from 'react-redux';
+import { ADD_ITEM } from '../../redux/item';
 
-const AddItem = ({ items, setItems }) => {
+const AddItem = () => {
+  const items = useSelector((state) => state.items.items);
+  const dispatch = useDispatch();
+
   /* useState */
   const [isAdd, setAdd] = useState(false);
   const [isValid, setIsValid] = useState(false);
@@ -85,7 +70,7 @@ const AddItem = ({ items, setItems }) => {
   };
 
   const onClickAddButton = () => {
-    setItems([...items, data]);
+    dispatch(ADD_ITEM(data));
   };
 
   // Amount 입력 값 원화 단위 표시 function
