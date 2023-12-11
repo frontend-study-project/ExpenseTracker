@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+
+import { AddIcon } from '@chakra-ui/icons';
 import {
   Container,
   Text,
+  IconButton,
   Box,
   Spacer,
   Flex,
@@ -19,9 +22,13 @@ import {
   WrapItem,
 } from '@chakra-ui/react';
 import { categoryList } from '../../utils/data/categoryList';
+import { useDispatch, useSelector } from 'react-redux';
+import { ADD_ITEM } from '../../redux/item';
 import AddCategory from '../AddCategory';
 
-const AddItem = ({ items, setItems }) => {
+const AddItem = () => {
+  const items = useSelector(state => state.items.items);
+  const dispatch = useDispatch();
   /********** useState **********/
   const [isValid, setIsValid] = useState(false);
   const [lastAmount, setLastAmount] = useState('');
@@ -91,10 +98,11 @@ const AddItem = ({ items, setItems }) => {
 
   /********** event function **********/
   const onClickAddButton = () => {
-    setItems([...items, data]);
-    // 지출내역 제목 최신데이터 Setting
-    setLastAmount([...lastAmount, data.amount]);
-    setKRW('');
+    // setItems([...items, data]);
+    // // 지출내역 제목 최신데이터 Setting
+    // setLastAmount([...lastAmount, data.amount]);
+    // setKRW('');
+    dispatch(ADD_ITEM(data));
   };
   // Amount 입력 값 원화 단위 표시 function
   const convertAmount = amount => {
