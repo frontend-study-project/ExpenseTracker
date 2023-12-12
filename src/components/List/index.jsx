@@ -12,37 +12,63 @@ const List = ({ startDate, endDate }) => {
   const items = useSelector((state) => state.items.items);
   const activeItem = useSelector((state) => state.items.activeItem);
 
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(0);
+  const [data, setData] = useState(filterByDate(sortByDate(groupByDate(items)), [startDate, endDate]));
+  const [scrollData, setScrollData] = useState([]);
 
-  const fetch = async () => {
-    console.log("받은 items: ", items);
-
-    try {
-      setData(filterByDate(sortByDate(groupByDate(items)), [startDate, endDate]));
-      setLoading(false);
-    } catch (error) {
-      window.alert(error);
+  const handleObserver = (entries) => {
+    const target = entries[0];
+    if (target.isIntersecting && !loading) {
+      setPage((prevPage) => prevPage + 1);
     }
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      fetch();
-    }, [1000]);
-    setLoading(true);
-  }, [startDate, items]);
+  const fetchData = async () => {
+    try {
+      if (page > 1) {
+        const newData = data.slice((page - 1) * 3, page * 3);
+        setScrollData((prevData) => [...prevData, ...newData]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
+  };
 
   useEffect(() => {
-    console.log(data);
-    console.log(loading);
-  }, [data, loading]);
+    const observer = new IntersectionObserver(handleObserver, { threshold: 0 });
+    const observerTarget = document.getElementById("observer");
+    if (observerTarget) {
+      observer.observe(observerTarget);
+    }
+  }, []);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      fetchData();
+    }, [500]);
+  }, [page]);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setPage(1);
+      setData(filterByDate(sortByDate(groupByDate(items)), [startDate, endDate]));
+    }, [500]);
+  }, [items, startDate, endDate]);
+
+  useEffect(() => {
+    setScrollData(data.slice(0, page * 3));
+    setLoading(false);
+  }, [data]);
+
   return (
     <Container>
-      {loading ? (
-        <Loading />
-      ) : data.length ? (
-        data.map((group, key) => (
+      {loading && <Loading />}
+      {scrollData.length ? (
+        scrollData.map((group, key) => (
           <Accordion key={key} pb="20px">
             <Text fontSize="md" color="gray.500">
               {group.date}
@@ -59,6 +85,7 @@ const List = ({ startDate, endDate }) => {
           </Text>
         </Box>
       )}
+      <div id="observer"></div>
     </Container>
   );
 };
