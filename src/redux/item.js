@@ -1,29 +1,25 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { expense } from "../utils/data/expense";
+import { createSlice } from '@reduxjs/toolkit';
+import { expense } from '../utils/data/expense';
 
 export const itemSlice = createSlice({
-  name: "items",
+  name: 'items',
   initialState: {
     items: expense,
     activeItem: -1,
   },
   reducers: {
-    ADD_ITEM: (state, action) => ({
-      items: [...state.items, action.payload],
-      activeItem: -1,
-    }),
-    UPDATE_ITEM: (state, action) => ({
-      items: state.items.map((item) => (item.id === action.payload.id ? action.payload : item)),
-      activeItem: -1,
-    }),
-    DELETE_ITEM: (state, action) => ({
-      items: state.items.filter((item) => item.id !== action.payload),
-      activeItem: -1,
-    }),
-    ACTIVE_ITEM: (state, action) => ({
-      items: state.items,
-      activeItem: action.payload,
-    }),
+    ADD_ITEM: (state, action) => {
+      state.items.push(action.payload);
+    },
+    UPDATE_ITEM: (state, action) => {
+      state.items = state.items.map((item) => (item.id === action.payload.id ? action.payload : item));
+    },
+    DELETE_ITEM: (state, action) => {
+      state.items = state.items.filter((item) => item.id !== action.payload);
+    },
+    ACTIVE_ITEM: (state, action) => {
+      state.activeItem = action.payload;
+    },
   },
 });
 
