@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
-
-import { AddIcon } from '@chakra-ui/icons';
 import {
   Container,
   Text,
-  IconButton,
   Box,
   Spacer,
   Flex,
@@ -21,14 +18,16 @@ import {
   ModalBody,
   WrapItem,
 } from '@chakra-ui/react';
-import { categoryList } from '../../utils/data/categoryList';
+import { currencyFormatter } from '../../utils/function/currencyFormatter';
 import { useDispatch, useSelector } from 'react-redux';
 import { ADD_ITEM } from '../../redux/item';
 import AddCategory from '../AddCategory';
 
 const AddItem = () => {
   const items = useSelector(state => state.items.items);
+  const category = useSelector(state => state.category.items);
   const dispatch = useDispatch();
+
   /********** useState **********/
   const [isValid, setIsValid] = useState(false);
   const [lastAmount, setLastAmount] = useState('');
@@ -92,17 +91,13 @@ const AddItem = () => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-  const handleConfirmModal = inputValue => {
-    console.log('입력 된 값', inputValue);
-  };
 
   /********** event function **********/
   const onClickAddButton = () => {
     // setItems([...items, data]);
-    // // 지출내역 제목 최신데이터 Setting
-    // setLastAmount([...lastAmount, data.amount]);
-    // setKRW('');
     dispatch(ADD_ITEM(data));
+    setLastAmount(data.amount);
+    setKRW('');
   };
   // Amount 입력 값 원화 단위 표시 function
   const convertAmount = amount => {
@@ -138,7 +133,7 @@ const AddItem = () => {
               지출 내역
             </Text>
             <Text as="span" fontWeight="semibold" fontSize="md" marginLeft="3">
-              ( 최근 지출 금액 : {lastAmount}원 )
+              ( 최근 지출 금액 : {currencyFormatter(lastAmount)}원 )
             </Text>
           </Box>
           <Spacer />
@@ -151,12 +146,11 @@ const AddItem = () => {
               Category
             </Text>
             <WrapItem>
-              {' '}
               <Select size="sm" placeholder="선택" name="category" value={data.category} onChange={handleChange}>
-                {categoryList.map((category, key) => (
+                {category.map((category, key) => (
                   <option key={key}>{category.name}</option>
                 ))}
-              </Select>{' '}
+              </Select>
               <Button colorScheme="linkedin" onClick={handleOpenModal}>
                 카테고리 추가
               </Button>
@@ -226,7 +220,7 @@ const AddItem = () => {
             </ModalBody>
           </ModalContent>
         </Modal>
-        <AddCategory isModalOpen={isModalOpen} onModalClose={handleCloseModal} onModalConfirm={handleConfirmModal} />
+        <AddCategory isModalOpen={isModalOpen} onModalClose={handleCloseModal} />
       </Container>
     </>
   );
